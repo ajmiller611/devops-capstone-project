@@ -51,8 +51,8 @@ def create_accounts():
     account.create()
     message = account.serialize()
     # Uncomment once get_accounts has been implemented
-    # location_url = url_for("get_accounts", account_id=account.id, _external=True)
-    location_url = "/"  # Remove once get_accounts has been implemented
+    location_url = url_for("get_accounts", account_id=account.id, _external=True)
+    #location_url = "/"  # Remove once get_accounts has been implemented
     return make_response(
         jsonify(message), status.HTTP_201_CREATED, {"Location": location_url}
     )
@@ -69,7 +69,7 @@ def create_accounts():
 ######################################################################
 
 @app.route("/accounts/<int:account_id>", methods=["GET"])
-def read_accounts(account_id):
+def get_accounts(account_id):
     """
     Reads an Account
     This endpoint will read an Account based on the account_id that is requested
