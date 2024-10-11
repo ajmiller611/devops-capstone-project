@@ -141,13 +141,6 @@ class TestAccountService(TestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
-    def test_get_account_not_found(self):
-        """It should not Read an Account that is not found"""
-        response = self.client.get(
-            f"{BASE_URL}/0", content_type="application/json"
-        )
-        self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
-
     def test_update_account(self):
         """It should Update an exisiting Account"""
         test_account = AccountFactory()
@@ -202,4 +195,3 @@ class TestAccountService(TestCase):
 
         response = self.client.post(f"{BASE_URL}/0")
         self.assertEqual(response.status_code, status.HTTP_405_METHOD_NOT_ALLOWED)
-
